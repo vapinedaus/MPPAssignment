@@ -9,7 +9,17 @@ public class Faculty extends Person  {
 		super.setPhone(phone);
 		super.setAge(age);
 		setSalary(salary);
-	}
+		setType("faculty");
+		}
+		
+		private String type;
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
+		}
 	
 	private double salary;
 	
@@ -21,15 +31,24 @@ public class Faculty extends Person  {
 		this.salary = salary;
 	}
 
+	private int totalUnits;
 	public int getTotalUnits()
 	{
 		
-		return 1;
+		return totalUnits;
 	}
 	
 	
-	public ArrayList<Course> courses = new ArrayList<Course>();
+	public void setTotalUnits(int totalUnits)
+	{
+		this.totalUnits = totalUnits;
+	}
 	
+	public ArrayList<Course> courses = new ArrayList<Course>();
+	public void AddCourse(Course c)
+	{
+		courses.add(c);
+	}
 	
 
 }

@@ -9,8 +9,20 @@ public class Student  extends Person {
 		super.setPhone(phone);
 		super.setAge(age);
 		setGpa(gpa);
+		setType("student");
 	}
 	
+	private String type;
+	
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	private double gpa;
 
 	public double getGpa() {
@@ -24,5 +36,23 @@ public class Student  extends Person {
 
 	
 	public ArrayList<Course> courses = new ArrayList<Course>();
+	public void AddCourse(Course c)
+	{
+		courses.add(c);
+	}
+	
+	
+	private int totalUnits;
+	public int getTotalUnits()
+	{
+		
+		return totalUnits;
+	}
+	
+	
+	public void setTotalUnits(int totalUnits)
+	{
+		this.totalUnits = totalUnits;
+	}
 	
 }

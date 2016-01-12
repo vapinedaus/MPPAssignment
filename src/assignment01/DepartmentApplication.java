@@ -2,7 +2,10 @@ package assignment01;
 
 import java.io.*;                 // for I/O
 import java.lang.Integer;  
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 
 public class DepartmentApplication
    {
-   public static void main(String[] args) throws IOException
+   public static void main(String[] args) throws IOException, ParseException
       {
       Department dept = new Department("ComputerScience");
       
@@ -46,7 +49,19 @@ public class DepartmentApplication
 		Staff davidHeck = new Staff("David Heck","472-8890",29,3600);
 		dept.AddPerson(frankGore);
 		dept.AddPerson(adamDavis);
+		
+		//test Student Staff
+		davidHeck.setType("StaffStudent");
+		davidHeck.setGpa(90);
+		String str_date="11-June-07";
+		DateFormat formatter = new SimpleDateFormat("dd-MMM-yy"); 
+		Date date = formatter.parse(str_date);
+		davidHeck.setDate(date);
+		davidHeck.AddCourse(new Course("cs201","programming",4, johnDoodle));
+		
 		dept.AddPerson(davidHeck);
+		
+
 
 		// Create course objects	
 		Course cs201 = new Course("cs201","programming",4, johnDoodle);
@@ -55,13 +70,43 @@ public class DepartmentApplication
 		Course cs240 = new Course("cs240","datastructure",2, johnDoodle);
 		Course cs301 = new Course("cs301","Software engg",3, samHoward);
 		Course cs450 = new Course("cs450","Advanced architecture",5,frankMoore);
-		dept.AddCourse(c);
-		dept.AddCourse(c);
-		dept.AddCourse(c);
-		dept.AddCourse(c);
-		dept.AddCourse(c);
-		dept.AddCourse(c);
-		//add Courses
+
+		//add Courses for faculty
+		dept.AddCourse(cs201);
+		dept.AddCourse(cs360);
+		dept.AddCourse(cs404);
+		dept.AddCourse(cs240);
+		dept.AddCourse(cs301);
+		dept.AddCourse(cs450);
+		
+		
+		// Create course objects for Student	
+		cs201 = new Course("cs201","programming",4, johnDoe); 
+		dept.AddCourse(cs201);	
+		cs201 = new Course("cs201","programming",4, maryJones); 
+		dept.AddCourse(cs201);	
+		cs201 = new Course("cs201","programming",4, leeJohnson); 
+			
+		cs360 = new Course("cs360","database",3, johnDoe);
+		dept.AddCourse(cs360);	
+		cs360 = new Course("cs360","database",3, leeJohnson);
+		dept.AddCourse(cs360);	
+			
+			
+		cs404 = new Course("cs404","compiler",4, johnDoe);
+		dept.AddCourse(cs404);	
+		cs404 = new Course("cs404","compiler",4, maryJones);
+		dept.AddCourse(cs404);	
+			
+		cs240 = new Course("cs240","datastructure",2, leeJohnson);
+		dept.AddCourse(cs240);	
+			
+		cs301 = new Course("cs301","Software engg",3, johnDoe);
+		dept.AddCourse(cs301);
+			
+		cs450 = new Course("cs450","Advanced architecture",5,leeJohnson);
+		dept.AddCourse(cs450);
+		
 		
 		
 		

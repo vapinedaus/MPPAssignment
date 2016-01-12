@@ -2,11 +2,11 @@ package assignment01;
 
 public class Course {
 
-	public Course(String number, String title,int unit, Faculty faculty) {
+	public Course(String number, String title,int unit, Person person) {
 		setNumber(number);
 		setTitle(title);
 		setUnits(unit);
-		this.faculty = faculty;
+		this.person = person;
 	}
 	
 	
@@ -20,16 +20,16 @@ public class Course {
 		if (getClass() != obj.getClass())
 			return false;
 		Course other = (Course) obj;
-		if (faculty == null) {
-			if (other.faculty != null)
+		if (person == null) {
+			if (other.person != null)
 				return false;
-		} else if (!faculty.equals(other.faculty))
+		} else if (!person.equals(other.person))
 			return false;
 		return true;
 	}
 
 
-	public Faculty faculty;
+	public Person person;
 	
 	private String number;
 	private String title;

@@ -31,7 +31,7 @@ public class Department {
 				Faculty faculty= (Faculty) person;
 				totalSalary = totalSalary + faculty.getSalary();
 			}
-			else if (person instanceof  Student==false)
+			else if (person instanceof  Staff)
 			{
 				Staff staff= (Staff) person;
 				totalSalary = totalSalary + staff.getSalary();
@@ -54,18 +54,18 @@ public class Department {
 			if (person instanceof Faculty)
 			{
 				Faculty faculty= (Faculty) person;
-				System.out.println("Name:" + faculty.getName() + " Phone Number:" + faculty.getPhone() + " Age:" + faculty.getAge() + " Type: faculty");
+				System.out.println("Name:" + faculty.getName() + " Phone Number:" + faculty.getPhone() + " Age:" + faculty.getAge() + " Type:" + faculty.getType());
 			}
 
 			else if (person instanceof Student)
 			{
 				Student student= (Student) person;
-				System.out.println("Name:" + student.getName() + " Phone Number:" + student.getPhone() + " Age:" + student.getAge() + " Type: student");
+				System.out.println("Name:" + student.getName() + " Phone Number:" + student.getPhone() + " Age:" + student.getAge() + " Type:" + student.getType());
 			}
 			else 
 			{
 				Staff staff= (Staff) person;
-				System.out.println("Name:" + staff.getName() + " Phone Number:" + staff.getPhone() + " Age:" + staff.getAge() + " Type: staff");
+				System.out.println("Name:" + staff.getName() + " Phone Number:" + staff.getPhone() + " Age:" + staff.getAge() + " Type:" + staff.getType());
 			}
 			
 			
@@ -79,42 +79,83 @@ public class Department {
     public ArrayList<Course> courses = new ArrayList<Course>();
 	
 	public void AddCourse(Course c)
-	{
-		courses.add(c);
-	}
-	private int unitsPerFaculty;
-	public void unitsPerFaculty()
-	{
+	{	
 		persons.forEach(person ->
 		{
 			if (person instanceof Faculty)
 			{
 				Faculty faculty= (Faculty) person;
 				
-				
-				unitsPerFaculty = 0;
-				courses.forEach(facultyCourses -> 
+				if(faculty.equals(c.person))
 				{
 					
-					if (facultyCourses.faculty.equals(faculty))
-					{
-						unitsPerFaculty = unitsPerFaculty + facultyCourses.getUnits();
-						
-					}
+					faculty.AddCourse(c);
+					faculty.setTotalUnits(faculty.getTotalUnits() + c.getUnits());
 				}
 				
-				);
-				
-						
-				System.out.println("Name:" + faculty.getName() + " Total Number of Units:" + unitsPerFaculty );   
-				
+			}
 			
+			if (person instanceof Student)
+			{
+				Student student= (Student) person;
+				
+				if(student.equals(c.person))
+				{
+					
+					student.AddCourse(c);
+					student.setTotalUnits(student.getTotalUnits() + c.getUnits());
+				}
+				
+			}
+		});
+		
+		
+	}
+	private int unitsPerFaculty;
+	public void unitsPerFaculty()
+	{
+		persons.forEach(person ->
+		{
+			unitsPerFaculty = 0;
+			if (person instanceof Faculty)
+			{
+				Faculty faculty= (Faculty) person;
+				unitsPerFaculty = faculty.getTotalUnits();
+	
+				
+				
+				System.out.print("Name:" + faculty.getName()); 
+				faculty.courses.forEach(item -> {System.out.print( "["+ item.getNumber() +"]");})	;
+				System.out.print(" Total Number of Units:" + unitsPerFaculty + "\n" );
+			
+
 			}
 		});
 		
 		
 		
 	}
+	
+	
+	
+	public void unitsPerStudent()
+	{
+		persons.forEach(person ->
+		{
+			
+			if (person instanceof Student)
+			{
+				Student student= (Student) person;
+				
+				System.out.print("Name:" + student.getName()); 
+				student.courses.forEach(item -> {System.out.print( "["+ item.getNumber() +"]");})	;
+				System.out.print(" Total Number of Units:" + student.getTotalUnits() + "\n" );
+			
+	
+			}
+		});
+	}
+	
 	/**/
 	public void AddPerson(Person p)
 	{
