@@ -5,6 +5,9 @@ import java.util.*;
 public class Employee {
 
 	private Position empPossition;
+	public Position getEmpPossition() {
+		return empPossition;
+	}
 	public Employee(int employeeID,String firstName,String middleInitial,String lastName,Date birthDate,String SSN, double salary,Position empPossition ) {
 		// TODO Auto-generated constructor stub
 		        this.employeeID = employeeID;
@@ -32,15 +35,16 @@ public class Employee {
 	{
        return this.salary;
 	}
+	public String Tab = "\t";
 	public void print()
 	{
-		System.out.println("		    Employee ID: " + employeeID );
-		System.out.println("			First Name: " + firstName );
-		System.out.println("			Middle Initial: " + middleInitial );
-		System.out.println("			Birth Date: " + birthDate );
-		System.out.println("			SSN: " + SSN );
-		System.out.println("			Salary: " + salary );
-		System.out.println("			Position: " + empPossition.getTitle() );
+		System.out.println(Tab + "Employee ID: " + employeeID );
+		System.out.println(Tab + "First Name: " + firstName );
+		System.out.println(Tab + "Middle Initial: " + middleInitial );
+		System.out.println(Tab + "Birth Date: " + birthDate );
+		System.out.println(Tab + "SSN: " + SSN );
+		System.out.printf(Tab + "Salary: $ %,.2f \n",salary );
+		//System.out.println(Tab + "Position: " + empPossition.getTitle() );
 		
 		
 	}

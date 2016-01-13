@@ -40,5 +40,48 @@ public class Company {
 		
 
 	}
+	
+	//lab3
+	public void printReportingHierarchy()
+	{
+		System.out.println("Company: " + getName());
+		System.out.println("*******************************Top Executive******************");
+		getTopExecutive().print();
+		System.out.println("**************************************************************");
+		
+		departments.forEach(item-> 
+		{
+			if (item.getName()!=null)
+			{
+		    
+			   item.printReportingHierarchy();
+			
+			}
+		});
+	}
+	
+	Position exec;
+	public Position getTopExecutive()
+	{
+		
+		departments.forEach(item-> 
+		{
+			// to check if executive
+			if (item.getName()==null)
+			{
+		   
+				item.positions.forEach( posItem ->
+				{
+					exec = posItem;
+					
+				});
+				
+			
+			}
+		});
+		
+		return exec;
+	}
+	//lab3
 
 }

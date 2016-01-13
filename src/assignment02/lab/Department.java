@@ -42,6 +42,38 @@ public class Department {
 		return totalSalary;
 	}
 	
+	//lab3
+	public void printReportingHierarchy()
+	{
+		System.out.println("	Department: " + getName() + " Location: " + getLocation());
+		positions.forEach(item-> 
+		{
+			if (getDepartmentHead().equals(item))
+			{
+			   item.print();
+			   item.printdownline();
+			}
+		});
+		
+	}
+	
+	Position deptHead = null;
+	public Position getDepartmentHead()
+	{
+
+		positions.forEach(item-> 
+		{
+			if (item.isDepartmentHead == true)
+			{
+				deptHead =  item;
+			}
+		});
+		
+		return deptHead;
+	
+	}
+	//lab3
+	
 	
 
 
