@@ -2,7 +2,7 @@ package assignment01;
 
 import java.util.*;
 
-public class Staff  extends Person {
+public class Staff  extends Person implements IStaff {
 
 	public Staff()
 	{
@@ -38,32 +38,7 @@ public class Staff  extends Person {
 		this.salary = salary;
 	}
 	
-	//Staff-Student
-	private double gpa;
-	public double getGpa() {
-		return gpa;
-	}
 
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
-	}
-
-	private Date date;
-
-    public void setDate(Date date){
-        this.date = date;
-    }
-
-    public Date getDate(){
-        return this.date;
-    }
-	
-    public ArrayList<Course> courses = new ArrayList<Course>();
-    public void AddCourse(Course c)
-	{
-		courses.add(c);
-	}
-	//Staff-Student
 
 	
 

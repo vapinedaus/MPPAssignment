@@ -3,6 +3,7 @@ package assignment01;
 import java.io.*;                 // for I/O
 import java.lang.Integer;  
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,18 +50,17 @@ public class DepartmentApplication
 		Staff davidHeck = new Staff("David Heck","472-8890",29,3600);
 		dept.AddPerson(frankGore);
 		dept.AddPerson(adamDavis);
+		dept.AddPerson(davidHeck);
+		
 		
 		//test Student Staff
-		davidHeck.setType("StaffStudent");
-		davidHeck.setGpa(90);
 		String str_date="11-June-07";
 		DateFormat formatter = new SimpleDateFormat("dd-MMM-yy"); 
 		Date date = formatter.parse(str_date);
-		davidHeck.setDate(date);
-		davidHeck.AddCourse(new Course("cs201","programming",4, johnDoodle));
 		
-		dept.AddPerson(davidHeck);
-		
+		StaffStudents victorpineda =new StaffStudents("Victor Pineda","472-8890",31,1,3600,date);
+		victorpineda.AddCourse(new Course("cs201","programming",4, johnDoodle));
+		dept.AddPerson(victorpineda);
 
 
 		// Create course objects	
@@ -139,7 +139,7 @@ public class DepartmentApplication
             case 'g':
                totsalary=dept.getTotalSalary();
                putText("Total sum of all salaries is:");
-               putText(String.valueOf(totsalary)+"\n");              
+               System.out.printf("$%,.2f \n" ,totsalary );      
                break;
             case 's':
                dept.showAllMembers();
