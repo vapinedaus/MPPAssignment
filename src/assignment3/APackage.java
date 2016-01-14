@@ -1,6 +1,6 @@
 package assignment3;
 
-public abstract class APackage implements IPackage {
+public abstract class APackage implements IPackage, ISender  {
 
 	
 	
@@ -37,5 +37,18 @@ public abstract class APackage implements IPackage {
 
 
 	public abstract double caculatePrice();
+	
+	@Override
+	public double getDiscount() {
+		// TODO Auto-generated method stub
+		return sender.getSenderDiscount();
+	}
+
+	private Sender sender;
+	@Override
+	public void setSender(Sender sender) {
+		// TODO Auto-generated method stub
+		this.sender = sender;
+	}
 
 }

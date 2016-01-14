@@ -19,7 +19,7 @@ public class USMail extends APackage {
 		{
 			rate = 0.55 * weight;
 		}
-		return rate;
+		return rate - (rate * getDiscount());
 	}
 
 }

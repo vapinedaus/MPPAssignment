@@ -35,7 +35,7 @@ public class FedEx extends APackage {
 		rate = 0.43 * weight;
 		break;
 	}
-		return rate;
+		return rate - (rate * getDiscount());
 	}
 
 }

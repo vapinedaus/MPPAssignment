@@ -17,6 +17,14 @@ public class Application {
 			
 			System.out.println("Number of Package(s):");
 			int numberOfPackage= getInt();
+			System.out.println("Sender of Category [student,senior,na]:");
+			Sender discountCategory= Sender.valueOf(getString());
+			if (discountCategory.getSenderDiscount() !=0)
+			{
+				System.out.println("You have a discount of " + discountCategory.getSenderDiscount()* 100 + "%");
+			}
+		
+			
 			
 			ArrayList<APackage> packages = new ArrayList<APackage>();
 			
@@ -31,36 +39,49 @@ public class Application {
 				String zone = getString();
 				
 				
-				double lowestPrice = 0;
-				
-				APackage item = new UPS(packageDescription,weight,zone);
-				lowestPrice = item.caculatePrice();
+				    double lowestPrice = 0;
 				
 				
-				if (lowestPrice > new FedEx(packageDescription,weight,zone).caculatePrice())
-				{
-					item = new FedEx(packageDescription,weight,zone);
+				
+					APackage item = new UPS(packageDescription,weight,zone);
+					item.setSender(discountCategory);
 					lowestPrice = item.caculatePrice();
-				} 
 				
-				if (lowestPrice > new USMail(packageDescription,weight,zone).caculatePrice())
-				{
-					item = new USMail(packageDescription,weight,zone);
-					lowestPrice = item.caculatePrice();
-				}
+			
+					APackage  itemFedex = new FedEx(packageDescription,weight,zone);
+				  itemFedex.setSender(discountCategory);
+					if (lowestPrice > itemFedex.caculatePrice())
+						{
+						lowestPrice= itemFedex.caculatePrice();
+						item = itemFedex;
+						}
+					
+			
+				
+					APackage itemUSMail = new USMail(packageDescription,weight,zone);
+					itemUSMail.setSender(discountCategory);
+					if (lowestPrice > itemUSMail.caculatePrice())
+					{
+						lowestPrice = itemUSMail.caculatePrice();
+						item= itemUSMail;
+					}
+				
+				
+				
+				
 				packages.add(item);
 				
 				
 				
 			}
 			
-			System.out.print("--------------------------------n");
+			System.out.print("--------------------------------\n");
 			for (APackage packItem: packages)
 			{
 			   
 			   System.out.printf(packItem.packageDescription + "\t$%,.2f" + "\t" +  packItem.getClass().getSimpleName() +"\n"  , packItem.caculatePrice());
 			}
-			System.out.print("--------------------------------n");
+			System.out.print("--------------------------------\n");
         
 
 	}
