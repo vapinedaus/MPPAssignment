@@ -19,6 +19,9 @@ public class Main {
 		ACustomer corpCust = new CorporateCust("Victor","California","389-787-8900");
 		//Create Order
 		Order order = new Order("1234",formatter.parse("14-01-2016"));
+		//Create orderline
+		
+		
 		//order.addOrderline(orderline);
 		//corpCust.createOrder();
 		
