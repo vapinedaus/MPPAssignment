@@ -5,8 +5,8 @@ public class CorporateCust extends ACustomer {
 	private double creditlimit;
 	
 	
-	public CorporateCust(String name, String address, String phone, double points) {
-		super(name, address, phone, points);
+	public CorporateCust(String name, String address, String phone) {
+		super(name, address, phone);
 		// TODO Auto-generated constructor stub
 	}
 

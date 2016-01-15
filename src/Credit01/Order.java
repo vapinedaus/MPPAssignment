@@ -11,7 +11,7 @@ public class Order {
 	   this.customer=customer;	
 	}
 	
-	ArrayList<Orderline> orderlines;
+	private ArrayList<Orderline> orderlines;
 	public void addOrderline(Orderline orderline)
 	{
 		orderlines.add(orderline);
@@ -20,24 +20,43 @@ public class Order {
 	
 	//attributes
 	private String ordernumber;
+	private Date orderdate;
+	
 	private boolean prepaid;
 	private double orderprice;
-	private Date orderdate;
+	
+
 	private String status;
 	
 	//constructor
-	public Order(String ordernumber,boolean prepaid,double orderprice,Date orderdate,String status) {
+	public Order(String ordernumber,Date orderdate) {
 		this.ordernumber=ordernumber;
-		this.prepaid= prepaid;
-		this.orderprice=orderprice;
 		this.orderdate=orderdate;
-		this.status=status;
 		
 		orderlines = new ArrayList<Orderline>();
 		
 	}
 	
 	//methods
+	public double getOrderprice() {
+		return orderprice;
+	}
+
+	public void setOrderprice(double orderprice) {
+		this.orderprice = orderprice;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setPrepaid(boolean prepaid) {
+		this.prepaid = prepaid;
+	}
 	public double getTotalPrice()
 	{
 		return 0;

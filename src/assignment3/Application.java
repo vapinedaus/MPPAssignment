@@ -66,13 +66,7 @@ public class Application {
 						item= itemUSMail;
 					}
 				
-				
-				
-				
-				packages.add(item);
-				
-				
-				
+				packages.add(item);				
 			}
 			
 			System.out.print("--------------------------------\n");

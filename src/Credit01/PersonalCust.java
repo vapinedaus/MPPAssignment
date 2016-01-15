@@ -7,9 +7,9 @@ public class PersonalCust extends ACustomer {
 	
 	
 	
-	public PersonalCust(String name, String address, String phone, double points) {
-		super(name, address, phone, points);
-		// TODO Auto-generated constructor stub
+	public PersonalCust(String name, String address, String phone) {
+		super(name, address, phone);
+		creditRating = CreditRating.good;
 	}
 
 	@Override
