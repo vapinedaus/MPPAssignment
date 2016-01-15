@@ -6,19 +6,12 @@ public class Orderline {
 
 	//assocition
 	private Order order;
-	public  void setOrder(Order order)
-	{
-		this.order=order;
-	}
-	
 	private ArrayList<IProduct> products;
-	public  void addProduct(IProduct product)
-	{
-		products.add(product);
-	}
+
 	
 	//atributes
-	private int quantity;
+	private int quantity ;
+	
 	private double price;
 	private String status;
 	private Date shipdate;
@@ -27,14 +20,20 @@ public class Orderline {
 	
 	
 	//constructor
-	public Orderline(int quantity,double price,String status,Date shipdate,double points) {
+	public Orderline(int quantity,IProduct product, Order order) {
 		this.quantity=quantity;
-		this.price=price;
-		this.status=status;
-		this.shipdate=shipdate;
-		this.points=points;
+		this.order= order;
 		
 		products = new ArrayList<IProduct>();
+		Product item = (Product)product;
+		for (int x=1; x<= this.quantity; x++)
+		{
+			products.add(item);
+			
+			price = price + item.getPrice();
+			points= points +item.getCompPoints().getPoints();
+		}
+		
 		
 	}
 	
@@ -42,12 +41,12 @@ public class Orderline {
 	//methods
 	public double computePrice()
 	{
-		return 0;
+		return price;
 	}
 	
 	public double computePoints()
 	{
-		return 0;
+		return points;
 	}
 
 }

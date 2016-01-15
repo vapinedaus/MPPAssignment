@@ -38,13 +38,9 @@ public class Order {
 	}
 	
 	//methods
-	public double getOrderprice() {
-		return orderprice;
-	}
+	
 
-	public void setOrderprice(double orderprice) {
-		this.orderprice = orderprice;
-	}
+	
 
 	public String getStatus() {
 		return status;
@@ -54,18 +50,26 @@ public class Order {
 		this.status = status;
 	}
 
-	public void setPrepaid(boolean prepaid) {
-		this.prepaid = prepaid;
-	}
-	public double getTotalPrice()
-	{
-		return 0;
-	}
-	
 	public boolean getPrepaid()
 	{
 		return false;
 	}
+	
+	public void setPrepaid(boolean prepaid) {
+		this.prepaid = prepaid;
+	}
+	
+	public double getTotalPrice()
+	{
+		for (Orderline ol : orderlines)
+		{
+			orderprice= orderprice + ol.computePrice();
+		}
+		
+		return orderprice;
+	}
+	
+	
 	
 	private double customerPoint;
 	public double getCustomerPoint()
@@ -79,9 +83,16 @@ public class Order {
 	}
 	
 	
+	
+	private double orderPoint;
 	public double getOrderPoint()
 	{
-		return 0;
+		for (Orderline ol : orderlines)
+		{
+			orderPoint= orderPoint + ol.computePoints();
+		}
+		
+		return orderPoint;
 	}
 	
 	
