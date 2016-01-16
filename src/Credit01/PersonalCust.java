@@ -15,7 +15,11 @@ public class PersonalCust extends ACustomer {
 	@Override
 	public CreditRating getCreditRating() {
 		// TODO Auto-generated method stub
-		return CreditRating.excelent;
+		return creditRating;
+	}
+	
+	public void setCreditRating(CreditRating creditRating) {
+		this.creditRating = creditRating;
 	}
 
 }

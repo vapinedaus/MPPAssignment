@@ -10,6 +10,8 @@ public class Product implements IProduct {
 	}
 
 
+
+
 	//attributes
 	private String description;
 	private String productnumber;
@@ -40,5 +42,22 @@ public class Product implements IProduct {
 		// TODO Auto-generated method stub
 		return price;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+
+	public boolean isInstock() {
+		return instock;
+	}
+
+
+	
+
+
+	
 
 }
