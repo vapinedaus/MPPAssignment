@@ -1,11 +1,10 @@
 package Credit01;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
+
 public class Order {
-
-
-
 
 	//association
 	private ICustomer customer;
@@ -48,7 +47,16 @@ public class Order {
 	
 
 	public String getStatus() {
+		
+		if (status== null || status.isEmpty())
+		{
+			
+			return "ON SHIPMENT";
+			
+		}
+		
 		return status;
+		
 	}
 
 	public void setStatus(String status) {
@@ -122,17 +130,43 @@ public class Order {
 	//new 
 	public void printOrder()
 	{
-		System.out.println("OR#: "+ this.ordernumber + "              Date:" + orderdate);
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+		System.out.println("OR#: "+ this.ordernumber + "\t\t\t\tDATE:" + format.format(orderdate));
+		
 	
 		
-		System.out.println("QTY \tPrd#\tDescription \t\tPrice\t");
+		
+		StringBuilder sb = new StringBuilder();
 		for (Orderline  item : orderlines)	
 		{
-			item.printOrderLineItem();
+			sb.append(item.getOrderLineItem());
+			
 			
 		}
-		System.out.println("*********************************************************************");
-
+		
+		System.out.println("STATUS: "+this.getStatus());
+		if (this.getStatus() != "PENDING SHIPMENT")
+		{
+			
+			// Set Shipping date 
+						Date date = getOrderdate();
+						GregorianCalendar cal = new GregorianCalendar();
+						cal.setTime(date);
+						cal.add(Calendar.DATE, 1);
+						System.out.println("SHIPPING DATE : "+ format.format(cal.getTime()) );
+			
+			for (Orderline  item : orderlines)	
+			{
+				item.setShipdate(cal.getTime());
+				
+				
+			}
+			
+		}
+		
+		
+		
 		if ( customer.getCreditRating() == CreditRating.poor) 
 		    setPrepaid(true);
 	     else
@@ -158,23 +192,30 @@ public class Order {
 		
 		if (getPrepaid())
 		{
-			System.out.println("***Must be prepaid***");
+			System.out.println("PAYMENT : PREPAID\n");
 		}
 		else
 		{
-			System.out.println("***Postpaid is allowed***");
+			System.out.println("PAYMENT : POSTPAID\n");
 		}
-		System.out.printf("GROSS TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );
+		
+		
+		System.out.println("QTY \tPrd#\tDescription \t\tPrice\t");
+		System.out.println(sb);
+		
+		
+		
+		
 		
 		
 		ACustomer customerpt = (ACustomer)customer;
 		
 		
-		System.out.printf("CUSTOMER POINTS:\t\t\t\t %.0f pts\n" ,  customerpt.getPoints());
-		System.out.printf("ORDER POINTS:\t\t\t\t\t %.0f pts\n" ,  getOrderPoint());
-		System.out.printf("TOTAL POINTS:\t\t\t\t\t %.0f pts\n" ,  customerpt.getPoints() + getOrderPoint());
+		System.out.printf("CUSTOMER POINTS:\t\t\t\t%.0f pts\n" ,  customerpt.getPoints());
+		System.out.printf("ORDER POINTS:\t\t\t\t\t%.0f pts\n" ,  getOrderPoint());
+		System.out.printf("TOTAL POINTS:\t\t\t\t\t%.0f pts\n" ,  customerpt.getPoints() + getOrderPoint());
 		
-		
+		System.out.printf("GROSS TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );
 		setCustomerPoint(orderPoint);
 		System.out.printf("Discount:\t\t\t\t\t$ %,.2f\n" ,  discount);
 		System.out.printf("NET TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );

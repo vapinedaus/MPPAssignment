@@ -96,8 +96,10 @@ public class Application {
 			//lab 3
 			   
 			   
-			  // comp.print();
-			   //comp.getSalary();
+			 comp.print();
+			 comp.getSalary();
+			 
+			 System.out.println("\n***********************************************************************");
 	
 			comp.printReportingHierarchy();
 		

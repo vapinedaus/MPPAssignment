@@ -42,9 +42,9 @@ public class Main {
 		ACustomer corpCust = new CorporateCust("Victor Pineda","California","389-787-8900");
 		corpCust.setCreditRating(CreditRating.excelent);
 		//Create Order (orderid, date)
-		Order order1 = new Order("1",formatter.parse("14-01-2016"));
+		Order order1 = new Order("12345-123",formatter.parse("14-01-2016"));
 		order1.setCustomer(corpCust);
-		Order order2 = new Order("2",formatter.parse("15-01-2016"));
+		Order order2 = new Order("4567-5678",formatter.parse("15-01-2016"));
 		order2.setCustomer(corpCust);
 		
 		//Create orderline (qty, product, order)
@@ -54,7 +54,7 @@ public class Main {
 		Orderline forthOrder = new Orderline(1,SearchInventory("444"),order1);
 		Orderline fifthOrder = new Orderline(1,SearchInventory("555"),order1);
 		order1.addOrderline(firstOrder);
-		order1.addOrderline(secondOrder);
+		//order1.addOrderline(secondOrder);
 		order1.addOrderline(thirdOrder);
 		order1.addOrderline(forthOrder);
 		order1.addOrderline(fifthOrder);
@@ -87,9 +87,9 @@ public class Main {
 		ACustomer PersonalCust = new PersonalCust("Jennyfer","Iowa","389-787-8900");
 		//corpCust.setCreditRating(CreditRating.poor);
 		//Create Order (orderid, date)
-		Order porder1 = new Order("1",formatter.parse("14-01-2016"));
+		Order porder1 = new Order("1245-890",formatter.parse("14-01-2016"));
 		porder1.setCustomer(corpCust);
-		Order porder2 = new Order("2",formatter.parse("15-01-2016"));
+		Order porder2 = new Order("47502-758",formatter.parse("15-01-2016"));
 		porder2.setCustomer(corpCust);
 		
 		//Create orderline (qty, product, order)

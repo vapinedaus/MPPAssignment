@@ -1,5 +1,6 @@
 package Credit01;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -24,12 +25,7 @@ public class Orderline {
 	public Orderline(int quantity,IProduct product, Order order) {
 		this.quantity=quantity;
 		this.order= order;
-		Date date = this.order.getOrderdate();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		cal.add(Calendar.DATE, 30);
-		//Shipdate
-		shipdate = cal.getTime();
+		
 		
 		
 		
@@ -47,6 +43,16 @@ public class Orderline {
 	}
 	
 	
+	public Date getShipdate() {
+		return shipdate;
+	}
+
+
+	public void setShipdate(Date shipdate) {
+		this.shipdate = shipdate;
+	}
+
+
 	//methods
 	public double computePrice()
 	{
@@ -58,24 +64,27 @@ public class Orderline {
 		return points;
 	}
 	
-	public void printOrderLineItem()
+	public String getOrderLineItem()
 	{
 		
 	    Product product = (Product) products.get(0);
-	    String stockMessage="";
 	    if (!product.isInstock())
 	    {
 	    	SimpleDateFormat format = new SimpleDateFormat("MM-DD-YY");
-	    	stockMessage = " - Shipping Date: " + format.format(shipdate) ;
 	    	setStatus("OUT OF STOCK");
+	    	order.setStatus("PENDING SHIPMENT");
 	    }
 	    else
 	    {
-	    	setStatus("ON DELIVERY");
-	    	stockMessage = "";
+	    	setStatus("IN STOCK");
 	    	
 	    }
-		System.out.printf(this.quantity +"\t" + product.getProductnumber()+"\t" + product.getDescription() + "("  + computePoints() +  "pt)"+ "\t\t$ %,.2f\t" + status + stockMessage+ "\n" , computePrice());
+	    
+	    DecimalFormat formatDec = new DecimalFormat(",###,###.00");
+		
+	    return this.quantity +"\t" + product.getProductnumber()+"\t" + product.getDescription() + "("  + computePoints() +  "pt)"+ "\t\t$ "+formatDec.format(computePrice())+"\t" + status + "\n"; 
+		
+	
 		
 	}
 	

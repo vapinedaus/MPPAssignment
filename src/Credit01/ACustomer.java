@@ -33,20 +33,21 @@ public abstract class ACustomer implements ICustomer  {
 	public abstract void setCreditRating(CreditRating creditRating);
 	public void printOrders()
 	{
-      System.out.println("--------------------------------------------------------------------");
-	  System.out.println("Name: "+ this.name );
-	  System.out.println("Address: "+ this.address );
-	  System.out.println("Phone: "+ this.phone );
-	  System.out.println("Credit Rating: "+ this.getCreditRating() );
-	  System.out.println("Type:" + this.getClass().getSimpleName());
+      System.out.println("********************************************************************");
+	  System.out.println("NAME: \t\t"+ this.name );
+	  System.out.println("ADDRESS: \t"+ this.address );
+	  System.out.println("PHONE: \t\t"+ this.phone );
+	  System.out.println("CREDIT RATING: \t"+ this.getCreditRating() );
+	  System.out.println("TYPE: \t\t" + this.getClass().getSimpleName());
 	  System.out.println("--------------------------------------------------------------------");
-	  System.out.println("--------------------------------------------------------------------");
+
 		
 		 for ( Order item : orders )
 		 {
 			 
 			 item.printOrder();
 		 }
+	  System.out.print("\n\n\n");
 		
 	}
 
