@@ -34,6 +34,7 @@ public class CorporateCust extends ACustomer {
 	}
 	public void generateMonthlyBill()
 	{
+		setisgenerateMonthlyBill(true);
 		printOrders();
 	}
 

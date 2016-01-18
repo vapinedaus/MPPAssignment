@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class Order {
+
+public class Order 
+{
 
 	//association
 	private ICustomer customer;
@@ -213,14 +215,19 @@ public class Order {
 		
 		System.out.printf("CUSTOMER POINTS:\t\t\t\t%.0f pts\n" ,  customerpt.getPoints());
 		System.out.printf("ORDER POINTS:\t\t\t\t\t%.0f pts\n" ,  getOrderPoint());
-		System.out.printf("TOTAL POINTS:\t\t\t\t\t%.0f pts\n" ,  customerpt.getPoints() + getOrderPoint());
+		System.out.printf("TOTAL POINTS:...................................%.0f pts\n" ,  customerpt.getPoints() + getOrderPoint());
 		
-		System.out.printf("GROSS TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );
+		
+		
+		System.out.printf("\nGROSS TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );
 		setCustomerPoint(orderPoint);
-		System.out.printf("Discount:\t\t\t\t\t$ %,.2f\n" ,  discount);
-		System.out.printf("NET TOTAL:\t\t\t\t\t$ %,.2f\n" ,  getTotalPrice() );
+		System.out.printf("DISCOUNT:\t\t\t\t\t$ %,.2f\n" ,  discount);
+		System.out.printf("NET TOTAL:......................................$ %,.2f\n" ,  getTotalPrice() );
 		
-		
+		if (discount!=0)
+		{
+			System.out.println("\n**Total points is reseted for the discount**");
+		}
 		
 		System.out.println("--------------------------------------------------------------------");
 	}
@@ -231,6 +238,10 @@ public class Order {
 		return orderdate;
 	}
 
+	
+
+
+	
 	
 	
 	

@@ -80,7 +80,7 @@ public class Main {
 		//print
 		corpCust.printOrders();
 		
-		
+	
 		
 		
 		
@@ -124,6 +124,11 @@ public class Main {
 		
 		//print
 		PersonalCust.printOrders();
+		
+		//print
+		CorporateCust pCorpCust  =(CorporateCust)corpCust;
+		pCorpCust.generateMonthlyBill();
+		
 	}
 
 }

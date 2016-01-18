@@ -1,6 +1,9 @@
 package Credit01;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public abstract class ACustomer implements ICustomer  {
 
@@ -31,8 +34,20 @@ public abstract class ACustomer implements ICustomer  {
 	//Methods
 	public abstract CreditRating getCreditRating(); 
 	public abstract void setCreditRating(CreditRating creditRating);
+	
+	private boolean isgenerateMonthlyBill;
+	public void setisgenerateMonthlyBill( boolean isgenerateMonthlyBill)
+	{
+		this.isgenerateMonthlyBill=isgenerateMonthlyBill;
+	}
 	public void printOrders()
 	{
+		if (isgenerateMonthlyBill)
+		{
+			System.out.println("********************************************************************");
+			 System.out.println("*********************MONTHLY GENERATED BILL************************");
+		}
+	  	
       System.out.println("********************************************************************");
 	  System.out.println("NAME: \t\t"+ this.name );
 	  System.out.println("ADDRESS: \t"+ this.address );
@@ -41,12 +56,56 @@ public abstract class ACustomer implements ICustomer  {
 	  System.out.println("TYPE: \t\t" + this.getClass().getSimpleName());
 	  System.out.println("--------------------------------------------------------------------");
 
+	  if (isgenerateMonthlyBill== false)
+	  { 
 		
+		  Collections.sort(orders, new Comparator<Order>() {
+			  public int compare(Order o1, Order o2) {
+			      return o1.getOrderdate().compareTo(o2.getOrderdate());
+			  }
+			}); 
+		  
 		 for ( Order item : orders )
 		 {
 			 
 			 item.printOrder();
 		 }
+	  }
+	  else  
+	  {
+		  Collections.sort(orders, new Comparator<Order>() {
+			  public int compare(Order o1, Order o2) {
+			      return o1.getOrderdate().compareTo(o2.getOrderdate());
+			  }
+			});
+		  
+		  String month=""; 
+		  String previousMonth=""; 
+		  for ( Order item :  orders)
+		  {  
+			  
+			  
+				  if  (item.getPrepaid()== false) 
+				  {
+					  SimpleDateFormat formt = new SimpleDateFormat("MMMM");
+					  month =  formt.format(item.getOrderdate()); 
+					  
+					     if (month.isEmpty() || !month.equals(previousMonth) )
+					     {
+					    	 if (isgenerateMonthlyBill)
+					 		{
+					 			System.out.println("**********************Bill for "+ month +"******************************");
+					 		}
+					    	 previousMonth = month;
+					    	 
+					     }
+					   
+					  item.printOrder();
+					  
+				  }
+		  }
+
+	  }
 	  System.out.print("\n\n\n");
 		
 	}
