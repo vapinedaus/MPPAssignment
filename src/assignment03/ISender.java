@@ -1,4 +1,4 @@
-package assignment3;
+package assignment03;
 
 public interface ISender {
 
