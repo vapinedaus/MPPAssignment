@@ -49,7 +49,7 @@ public class DateRange {
 		cal.setTime(date);
 		int firstday = cal.getActualMinimum(Calendar.DAY_OF_MONTH);
 		cal.set(Calendar.DAY_OF_MONTH, firstday);
-		
+		 	 	
 		return cal.getTime();
 		
 	}
