@@ -2,13 +2,17 @@ package assignment05;
 
 public class Salaried extends Employee {
 
-	public Salaried() {
-		// TODO Auto-generated constructor stub
+	
+	private double salary;
+	public Salaried(int empID, double salary) {
+		super(empID);
+		this.salary = salary;
 	}
 
 	@Override
-	public void calcGrossPay(DateRange daterange) {
+	public double calcGrossPay(DateRange daterange) {
 		// TODO Auto-generated method stub
+		return salary;
 
 	}
 

@@ -1,15 +1,23 @@
 package assignment05;
 
+import java.util.ArrayList;
+
 public class Hourly extends Employee {
 
-	public Hourly() {
-		// TODO Auto-generated constructor stub
+	
+	private double hourlyWage;
+	private int hoursPerWeek;
+	public Hourly(int empID, double hourlyWage,int hoursPerWeek) {
+		super(empID);
+		this.hourlyWage=hourlyWage;
+		this.hoursPerWeek = hoursPerWeek;
+		
 	}
 
 	@Override
-	public void calcGrossPay(DateRange daterange) {
-		// TODO Auto-generated method stub
-
+	public double calcGrossPay(DateRange daterange) {
+		
+		return hourlyWage * (hoursPerWeek * 4);
 	}
 
 }
