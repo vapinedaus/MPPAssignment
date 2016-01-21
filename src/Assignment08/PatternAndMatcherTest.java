@@ -24,11 +24,6 @@ public class PatternAndMatcherTest {
 	  System.out.println("Initial value: " + countStr);
 	  System.out.println("Replaced value: " + matcher.replaceAll("eight"));
 
-
-
-	  
-	  
-	  
 	  
 	}
 }
