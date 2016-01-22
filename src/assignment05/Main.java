@@ -53,13 +53,12 @@ public class Main {
 	    Order order1 = new Order(111, format.parse("01-01-2016"), 1000);
 	    Order order2 = new Order(111, format.parse("02-22-2016"), 1000);
 	    Order order3 = new Order(111, format.parse("10-22-2016"), 1000);
-	    Commissioned  xCommissionedEmp = new  Commissioned( 222, 0.20, 5000);
-	    xCommissionedEmp.AddOrders(order1);
-	    xCommissionedEmp.AddOrders(order2);
-	    xCommissionedEmp.AddOrders(order3);
-	    
 
-	    Employee commissionedEmp = xCommissionedEmp;
+	    
+	    Employee commissionedEmp = new  Commissioned( 222, 0.20, 5000)
+	    .AddOrders(order1)
+	    .AddOrders(order2)
+	    .AddOrders(order3);
 	 
 	    
        System.out.print("\n\n\n");

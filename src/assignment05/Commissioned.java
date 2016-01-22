@@ -41,8 +41,9 @@ public class Commissioned extends Employee {
 	}
 	
 
-	public void AddOrders( Order order) {
+	public Commissioned AddOrders( Order order) {
 		orders.add(order);
+		return this;
 	}
 
 }
