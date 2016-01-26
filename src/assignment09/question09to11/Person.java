@@ -30,4 +30,9 @@ public class Person implements IPerson {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	@Override
+	public void myAbstract() {
+		// TODO Auto-generated method stub
+		System.out.println("From Abstract method.. ");
+	}
 }
