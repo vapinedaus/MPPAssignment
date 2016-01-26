@@ -1,4 +1,4 @@
-package Assignment08;
+package assignment08;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

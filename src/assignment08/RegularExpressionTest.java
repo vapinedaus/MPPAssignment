@@ -1,4 +1,4 @@
-package Assignment08;
+package assignment08;
 
 public class RegularExpressionTest {
 
@@ -24,11 +24,6 @@ public class RegularExpressionTest {
 	  System.out.println("Replaced value: " + countStr.replaceAll("[8]", eight));
 
 
-
-	  
-	  
-	  
-	  
 	}
 
 }
