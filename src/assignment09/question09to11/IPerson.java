@@ -11,4 +11,6 @@ public interface IPerson {
 	{
 		System.out.println("From Static method.. ");
 	}
+    
+    void myAbstract();
 }
