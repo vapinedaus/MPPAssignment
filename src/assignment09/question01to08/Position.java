@@ -121,7 +121,12 @@ public class Position {
 			if (pos.employees != null)
 				return false;
 		} else if (!employees.equals(pos.employees))
+		{
+
 			return false;
+			
+			
+		}
 		
 		if (isDepartmentHead != pos.isDepartmentHead)
 			return false;

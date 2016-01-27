@@ -73,7 +73,7 @@ public class Employee {
 	}
 	
 	
-	
+	@Override
 	public boolean equals(Object employee)
 	{
 		//check null
@@ -112,6 +112,71 @@ public class Employee {
 			return false;
 		
 		
+		if (employeeID != emp.employeeID)
+			return false;
+		
+		if (firstName == null) {
+			if (emp.firstName != null)
+				return false;
+		} else if (!firstName.equals(emp.firstName))
+			return false;
+		
+		if (lastName == null) {
+			if (emp.lastName != null)
+				return false;
+		} else if (!lastName.equals(emp.lastName))
+			return false;
+		
+		
+		if (middleInitial == null) {
+			if (emp.middleInitial != null)
+				return false;
+		} else if (!middleInitial.equals(emp.middleInitial))
+			return false;
+		
+		
+		if (salary!= emp.salary)
+			return false;
+		
+	
+		
+		//always return true
+		return true;
+		
+	}
+	
+	
+	public boolean myEquals(Object employee)
+	{
+		//check null
+		if (employee== null)
+			 return false;
+		// check class name
+		if(this.getClass() != employee.getClass()) 
+			return false;
+		// downcast 
+		Employee emp = (Employee)employee;
+		
+		if (SSN == null)
+		{
+			if(emp.SSN != null)
+			{
+				return false;
+			}
+		}else if(!SSN.equals(emp.SSN))
+		{
+		   return false;
+		}
+		
+	
+	
+		if (birthDate == null) {
+			if (emp.birthDate != null)
+				return false;
+		} else if (!birthDate.equals(emp.birthDate))
+			return false;
+		
+
 		if (employeeID != emp.employeeID)
 			return false;
 		
