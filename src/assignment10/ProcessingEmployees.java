@@ -97,6 +97,7 @@ public static void main(String[] args)
    Map<String, List<Employee>> groupedByDepartment =
       list.stream()
           .collect(Collectors.groupingBy(Employee::getDepartment));
+  
    groupedByDepartment.forEach(
       (department, employeesInDepartment) -> 
       {
@@ -202,7 +203,7 @@ public static void main(String[] args)
    .stream()
    .map(getUpperLastName)
    .forEach(System.out::println);
-  
+ 
    
    System.out.println("\n\nPrint out all of the Employee objects whose last name begins with the letter  ‘I’  in sorted order, and get rid of all the duplicates:");
    sortbyLastName = employee ->  employee.getLastName();
