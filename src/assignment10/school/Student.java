@@ -1,8 +1,6 @@
-package assignment01;
+package assignment10.school;
 
 import java.util.ArrayList;
-
-import assignment09.question09to11.StudentLevel;
 
 public class Student  extends Person {
 	
@@ -56,23 +54,5 @@ public class Student  extends Person {
 	{
 		this.totalUnits = totalUnits;
 	}
-	
-	  private StudentLevel studentlevel;
-	  
-	  public StudentLevel getStudentlevel() {
-			return studentlevel;
-		}
-
-		public void setStudentlevel(StudentLevel studentlevel) {
-			this.studentlevel = studentlevel;
-		}
-
-		@Override
-		public String toString() {
-			return "Student [type=" + type + ", gpa=" + gpa + ", courses=" + courses + ", totalUnits=" + totalUnits
-					+ ", studentlevel=" + studentlevel + "]";
-		}
-
-		
 	
 }
