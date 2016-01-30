@@ -113,6 +113,7 @@ public static void main(String[] args)
       list.stream()
           .collect(Collectors.groupingBy(Employee::getDepartment, 
              TreeMap::new, Collectors.counting()));
+   
    employeeCountByDepartment.forEach(
       (department, count) -> System.out.printf(
          "%s has %d employee(s)%n", department, count));

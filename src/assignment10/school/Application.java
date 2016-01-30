@@ -134,7 +134,7 @@ public class Application
 	      while(true)
 	         {
 	         putText("Enter first letter of ");
-	         putText("getTotalSalary, showAllMembers, unitsPerFaculty or quit : ");
+	         putText("getTotalSalary, showAllMembers, unitsPerFaculty, xunitsPerStudent or quit : ");
 	         int choice = getChar();
 	         switch(choice)
 	            {
@@ -149,6 +149,9 @@ public class Application
 	            case 'u':
 	               dept.unitsPerFaculty();
 	               break;
+	            case 'x':
+		               dept.unitsPerStudent();
+		               break;
 	            case 'q': return;
 	            default:
 	               putText("Invalid entry\n");
