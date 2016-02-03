@@ -211,7 +211,7 @@ public static void main(String[] args)
    list.stream()
    .filter(employee -> employee.getLastName().startsWith("I"))
    .sorted(Comparator.comparing(sortbyLastName))
-   .map(employee -> employee.getLastName())
+   //.map(employee -> employee.getLastName())
    .distinct()
    .forEach(System.out::println);
    
